@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Background Music</title>
+  </head>
+  <body>
+    <p>Contents here as usual.</p>
+
+    <!-- (A) AUDIO TAG -->
+    <audio src="1.mp3" id="bgm" autoplay></audio>
+
+    <script>
+    // (B) GET AUDIO TAG + DEFINE PLAYLIST
+    let audio = document.getElementById("bgm"),
+        playlist = ["1.mp3", "2.mp3"],
+        current = 0;
+
+    // (C) AUTO LOAD NEXT SONG
+    audio.onended = () => {
+      current++;
+      if (current >= playlist.length) { current = 0; }
+      audio.src = playlist[current];
+      audio.pause();
+      audio.load();
+      audio.play();
+    };
+    </script>
+  </body>
+</html>
